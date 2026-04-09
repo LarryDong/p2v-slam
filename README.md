@@ -4,21 +4,26 @@
 This repository contains the open-source code for the my *IEEE Transactions on Automation Science and Engineering (T-ASE)* paper: **"Implicit Point-to-Voxel LiDAR-IMU SLAM"**.  
 *(The paper is accepted, and I'll upload it soon after published)*
 
+<div align="center">
+  <img src="media/algorithm.png" alt="Algorithm Workflow" width="80%">
+  <p align="center"><b>The proposed point-to-voxel SLAM algorithm overview.</b></p>
+</div>
+
+
 Unlike traditional "point-to-plane" observation models, we propose an **implicit point-to-voxel** observation model to achieve reliable and robust localization in unstructured environments.
 
 <table table-layout="fixed" width="100%">
   <tr>
     <td align="center" width="50%">
-      <img src="demo-1.gif" alt="Demo 1" style="max-width:100%;">
+      <img src="media/demo-1.gif" alt="Demo 1" style="max-width:100%;">
     </td>
     <td align="center" width="50%">
-      <img src="demo-2.gif" alt="Demo 2" style="max-width:100%;">
+      <img src="media/demo-2.gif" alt="Demo 2" style="max-width:100%;">
     </td>
   </tr>
   <tr>
     <td align="center" colspan="2">
-      <br>
-      <sup>point-to-voxel matches (<span style="color:green;">green</span>) and point-to-plane matches (<span style="color:red;">red</span>)</sup>. Our p2v-matches are more consistent in tree leaves region.
+      point-to-voxel matches ($\color{green}{\textbf{green}}$) and point-to-plane matches ($\color{red}{\textbf{red}}$). Our p2v-matches are more consistent in tree leaves regions.
     </td>
   </tr>
 </table>
