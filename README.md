@@ -6,7 +6,22 @@ This repository contains the open-source code for the my *IEEE Transactions on A
 
 Unlike traditional "point-to-plane" observation models, we propose an **implicit point-to-voxel** observation model to achieve reliable and robust localization in unstructured environments.
 
-![Comparison](/media/compare.jpg)
+<table table-layout="fixed" width="100%">
+  <tr>
+    <td align="center" width="50%">
+      <img src="demo-1.gif" alt="Demo 1" style="max-width:100%;">
+    </td>
+    <td align="center" width="50%">
+      <img src="demo-2.gif" alt="Demo 2" style="max-width:100%;">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">
+      <br>
+      <sup>point-to-voxel matches (<span style="color:green;">green</span>) and point-to-plane matches (<span style="color:red;">red</span>)</sup>. Our p2v-matches are more consistent in tree leaves region.
+    </td>
+  </tr>
+</table>
 
 ## Installation
 
