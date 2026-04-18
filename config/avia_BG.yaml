@@ -1,0 +1,61 @@
+common:
+    lid_topic:  "/livox/lidar"
+    imu_topic:  "/livox/imu"
+    time_sync_en: false
+
+preprocess:
+    lidar_type: 1               # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR,
+    blind: 2                    # min detect range
+    det_range: 200.0            # max detect range
+    down_sample_size: 0.4       # input point filter by this value, and then skip `point_filter_num`
+    point_filter_num: 4         # How many point to skip (after downsample)
+
+
+estimation:
+    select_obs: 1500            # how many observation to select (Maximum number). 
+                                # You may need to modify it based on your dataset and computer CPU ability.
+    max_iteration: 3            # max iteration times (3 is enough)
+    iteration_time_budget: 95   # Unit: ms. Time limit for iteration. (> this value, no next  iteration)
+
+    extrinsic_T: [ 0.04165, 0.02326, -0.0284 ]
+    extrinsic_R: [ 1, 0, 0,
+                   0, 1, 0,
+                   0, 0, 1]
+
+
+# LiDAR & IMU measurement noise model.
+noise_model:
+    # LiDAR noise
+    ranging_cov: 0.02       # pointcloud measurement divergence
+    angle_cov: 0.05         # pointcloud measurement divergence
+    # IMU noise 
+    acc_cov: 0.1
+    gyr_cov: 0.1
+    b_acc_cov: 0.0001
+    b_gyr_cov: 0.0001
+
+
+# Point-to-Voxel model Settings
+p2v:
+    model:
+        batch_size: 64
+        encoder: "/home/larry/avi_slam_ws/src/p2v-slam/model/ve-net.onnx"  # path/to/your/model. TODO: You need to modify it!
+        decoder: "/home/larry/avi_slam_ws/src/p2v-slam/model/ir-net.onnx"  # path/to/your/model. TODO: You need to modify it!
+    num_cpu: 8  # hom many CPU core do you have. (Not the thread-number). TODO: You need to modify it!
+                # This value control the number of intra-op for VE-Net & IR-Net.
+                # If you give the wrong number: 
+                    # 1) if it < your real CPU number, the inference time (for IR-Net) can be further reduced by adding more CPU;
+                    # 2) if it > your real CPU number, threads will compete during inference, increases much more the processing time.
+
+# publish and debug control
+publish:
+    pub_ivoxel_map: false        # publish iVoxMap (both full-pointcloud and implicit voxels) (really slow when shown in rviz)
+    pub_dense_registered_scan: true       # publish full undistorted (and registered) pointcloud or filtered one
+    pub_selected_obs: true       # publish selected points for observation construction (based on importance-sampling)
+    pub_p2v_matches: true        # publish point-to-voxel matches or not.
+
+
+# debug info control
+output_debug_info: false         # output debug information (in terminal) or not
+
+

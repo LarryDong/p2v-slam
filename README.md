@@ -1,6 +1,10 @@
 
 # p2v-slam
 
+
+**Full SLAM codes are updated. I'll update this readme file soon.**
+
+
 This repository contains the open-source code for the my *IEEE Transactions on Automation Science and Engineering (T-ASE)* paper: **"Implicit Point-to-Voxel LiDAR-IMU SLAM"**.  
 *(The paper is accepted, and I'll upload it soon after published)*
 
@@ -32,11 +36,28 @@ Unlike traditional "point-to-plane" observation models, we propose an **implicit
 
 ### Dependencies
 This code is developed based on [PV-LIO](https://github.com/HViktorTsoi/PV-LIO).
+
+
+1. livox_msg_ros (maybe not the full livox driver is okay. Download the messages from [this repo](https://github.com/LarryDong/livox_msg_ros2))
+2. 
+
 * **Core Dependency:** [ONNX Runtime](https://onnxruntime.ai/) (for neural network inference).
 * Please refer to the original PV-LIO repository for other basic requirements (e.g., ROS, Eigen, PCL).
 
 ## Usage
-**TODO:** Detailed instructions for running the code will be provided soon.
+1. Run the launch file. For example, for Botanic Garden Dataset, run: 
+```bash
+# In one terminal:
+roslaunch p2v-slam run_BotanicGarden.launch
+# In a new terminal
+rosbag play xxx.bag
+```
+You can download a demo Botanic Garden sequence (`1018_13`) from here (GoogleDrive)[TODO:] or full dataset from: [BotanicGarden Repo](https://github.com/robot-pesg/BotanicGarden).
+
+2. 
+
+
+
 
 ## Models
 `p2v-slam` requires two neural networks:
@@ -61,3 +82,9 @@ We build upon the excellent work of [PV-LIO](https://github.com/HViktorTsoi/PV-L
 
 
 
+
+
+
+# TODO For My Own
+[] Remove voxel map original codes? `voxel_map_util.cpp` and `hpp`?
+[] 

@@ -1,0 +1,17 @@
+<launch>
+    <!-- Launch file for velodyne16 VLP-16 LiDAR -->
+
+    <arg name="rviz" default="true"/>
+    <arg name="debug" default="false"/>
+
+    <rosparam command="load" file="$(find p2v-slam)/config/avia_BG.yaml"/>
+
+    <group if="$(eval arg('debug') == False)">
+        <node pkg="p2v-slam" type="p2v_node" name="p2v_node" output="screen"/>
+    </group>
+
+    <group if="$(arg rviz)">
+        <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find p2v-slam)/config/rviz_cfg/rviz.rviz"/>
+    </group>
+
+</launch>   
